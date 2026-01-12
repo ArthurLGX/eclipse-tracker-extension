@@ -1,0 +1,123 @@
+{
+  "name": "eclipse-time-tracker",
+  "displayName": "Eclipse Time Tracker",
+  "description": "Track your development time automatically and sync with Eclipse Dashboard",
+  "version": "1.0.0",
+  "publisher": "eclipse-studio",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "eclipse-tracker.configure",
+        "title": "Eclipse: Configure API Token"
+      },
+      {
+        "command": "eclipse-tracker.linkProject",
+        "title": "Eclipse: Link Folder to Project"
+      },
+      {
+        "command": "eclipse-tracker.unlinkProject",
+        "title": "Eclipse: Unlink Current Folder"
+      },
+      {
+        "command": "eclipse-tracker.showStatus",
+        "title": "Eclipse: Show Tracking Status"
+      },
+      {
+        "command": "eclipse-tracker.syncNow",
+        "title": "Eclipse: Sync Now"
+      },
+      {
+        "command": "eclipse-tracker.pauseTracking",
+        "title": "Eclipse: Pause Tracking"
+      },
+      {
+        "command": "eclipse-tracker.resumeTracking",
+        "title": "Eclipse: Resume Tracking"
+      }
+    ],
+    "configuration": {
+      "title": "Eclipse Time Tracker",
+      "properties": {
+        "eclipseTracker.apiUrl": {
+          "type": "string",
+          "default": "https://api.dashboard.eclipsestudiodev.fr/api",
+          "description": "Eclipse Dashboard API URL"
+        },
+        "eclipseTracker.apiToken": {
+          "type": "string",
+          "default": "",
+          "description": "Your Eclipse API Token (generate in Dashboard Settings)"
+        },
+        "eclipseTracker.syncInterval": {
+          "type": "number",
+          "default": 300,
+          "description": "Sync interval in seconds (default: 5 minutes)"
+        },
+        "eclipseTracker.idleTimeout": {
+          "type": "number",
+          "default": 120,
+          "description": "Idle timeout in seconds before pausing tracking (default: 2 minutes)"
+        },
+        "eclipseTracker.projectMappings": {
+          "type": "object",
+          "default": {},
+          "description": "Folder to Eclipse Project ID mappings"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "eclipse-tracker",
+          "title": "Eclipse Tracker",
+          "icon": "assets/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "eclipse-tracker": [
+        {
+          "id": "eclipse-tracker.status",
+          "name": "Tracking Status"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArthurLGX/eclipse-tracker-extension"
+  }
+}
+
