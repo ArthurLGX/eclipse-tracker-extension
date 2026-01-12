@@ -5,7 +5,7 @@
 ## Features
 
 - **Automatic tracking**: No manual start/stop - tracks while you code
-- **Project linking**: Associate folders with Eclipse projects
+- **Project linking**: Associate folders with Dashboard Eclipse Studio projects
 - **Offline support**: Queues sessions locally and syncs when online
 - **Idle detection**: Automatically pauses when you're away
 - **Low overhead**: Syncs every 5 minutes (configurable)
@@ -103,4 +103,5 @@ Then press `F5` to launch a development instance.
 ## License
 
 MIT © Eclipse Studio
+
 
